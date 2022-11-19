@@ -13,6 +13,8 @@ namespace Tests
         [SerializeField] private Vector3 position;
         [SerializeField] private Vector3 rotation;
 
+        [SerializeField] private float frameRate = 0.02f;
+
         private void Start()
         {
             StartCoroutine(SendCoroutine());
@@ -30,7 +32,7 @@ namespace Tests
         IEnumerator SendCoroutine()
         {
             SendUpdate();
-            yield return 0.5f;
+            yield return new WaitForSeconds(frameRate);
             StartCoroutine(SendCoroutine());    
         }
     }

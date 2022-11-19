@@ -112,7 +112,7 @@ namespace Networking
 
         public void Abort()
         {
-            client.Disconnect(false);
+            client.Disconnect(true);
         }
 
         #region DEVELOPMENT REGION

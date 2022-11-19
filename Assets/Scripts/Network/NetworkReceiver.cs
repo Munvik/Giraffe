@@ -9,6 +9,7 @@ namespace Networking
     public class NetworkReceiver : MonoBehaviour
     {
         [SerializeField] private Lobby lobby;
+        [SerializeField] private WebSocketConnector connector;
         public string currentPayload;
 
         private void Start()
@@ -18,7 +19,6 @@ namespace Networking
 
         public void Receive(string data)
         {
-            Debug.Log("Received data = " + data);
             NetworkPayloadData payloadData = JsonUtility.FromJson<NetworkPayloadData>(data);
             currentPayload = payloadData.payload;
 
