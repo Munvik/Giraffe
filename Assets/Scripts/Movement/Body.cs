@@ -101,7 +101,7 @@ namespace Movement
                 }
 
                 foreach (var legAnim in legAnims)
-                    legAnim.UpdateRot(Mathf.Lerp(1f - targetCrouch, 1f, crouchLegsDuringJunp.Evaluate(jumpProgress)));
+                    legAnim.UpdateRot(Mathf.Lerp(legsSpreadDuringCrouch.Evaluate(1f - targetCrouch), 1f, crouchLegsDuringJunp.Evaluate(jumpProgress)));
 
                 jumpBody.transform.localPosition = Vector3.Lerp(Vector3.zero, targetPos, currentHeight);             
             }
