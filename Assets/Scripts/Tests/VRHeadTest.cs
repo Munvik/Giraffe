@@ -13,8 +13,6 @@ namespace Tests
         [SerializeField] private Vector3 position;
         [SerializeField] private Vector3 rotation;
 
-        [SerializeField] private float frameRate = 0.02f;
-
         private void Start()
         {
             StartCoroutine(SendCoroutine());
@@ -27,12 +25,15 @@ namespace Tests
             rotation = head.rotation.eulerAngles;
 
             sender.Send("OnHeadUpdate", JsonUtility.ToJson(headData));
+            Debug.Log(JsonUtility.ToJson(headData));
         }
+
+        public float timeSpan;
 
         IEnumerator SendCoroutine()
         {
+            yield return new WaitForSeconds(timeSpan);
             SendUpdate();
-            yield return new WaitForSeconds(frameRate);
             StartCoroutine(SendCoroutine());    
         }
     }
