@@ -1383,11 +1383,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2000703605, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: head
+      value: 
+      objectReference: {fileID: 2000703603}
+    - target: {fileID: 2000703605, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: sender
       value: 
       objectReference: {fileID: 1933910233}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+--- !u!4 &2000703603 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+  m_PrefabInstance: {fileID: 2000703599}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5872062763520412745
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -15,9 +15,9 @@ namespace Tests
 
         private void Update()
         {
-            HeadData headData = new HeadData(head.localPosition, head.localRotation.eulerAngles);
-            position = head.localPosition;
-            rotation = head.localRotation.eulerAngles;
+            HeadData headData = new HeadData(head.position, head.rotation.eulerAngles);
+            position = head.position;
+            rotation = head.rotation.eulerAngles;
 
             sender.Send("OnHeadUpdate", JsonUtility.ToJson(headData));
         }
