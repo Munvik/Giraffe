@@ -90,8 +90,9 @@ namespace Networking
                 return;
 
             //allocate and receive bytes
-            byte[] bytes = new byte[256];
+            byte[] bytes = new byte[client.ReceiveBufferSize];
             int idxUsedBytes = client.Receive(bytes);
+
             if (idxUsedBytes == 0)
                 return;
 
