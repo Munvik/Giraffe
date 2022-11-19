@@ -14,6 +14,7 @@ namespace Movement
         [SerializeField] private float crouchTo;
         [SerializeField] private List<LegAnimation> legAnims;
         [SerializeField] private AnimationCurve crouchLegsDuringJunp;
+        [SerializeField] private AnimationCurve legsSpreadDuringCrouch;
 
         [Header("Jumping")]
         [SerializeField] private float jumpHeight;
@@ -48,7 +49,8 @@ namespace Movement
 
         public void Crouch(float crouchValue)
         {
- 
+            targetCrouch += crouchValue;
+            targetCrouch = Mathf.Clamp01(targetCrouch);
         }
 
         public void Jump(float force)
@@ -79,7 +81,7 @@ namespace Movement
             targetPos.y = Mathf.Lerp(crouchFrom, crouchTo, targetCrouch);
             transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, Time.deltaTime * crouchSpeed);
             foreach (var legAnim in legAnims)
-                legAnim.UpdateRot(1f - targetCrouch);
+                legAnim.UpdateRot(legsSpreadDuringCrouch.Evaluate(1f - targetCrouch));
         }
 
         private void UpdateJump()
