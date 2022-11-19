@@ -13,6 +13,7 @@ namespace Movement
         [SerializeField] private float crouchFrom;
         [SerializeField] private float crouchTo;
         [SerializeField] private List<LegAnimation> legAnims;
+        [SerializeField] private AnimationCurve crouchLegsDuringJunp;
 
         [Header("Jumping")]
         [SerializeField] private float jumpHeight;
@@ -96,6 +97,9 @@ namespace Movement
                     duringJump = false;
                     return;
                 }
+
+                foreach (var legAnim in legAnims)
+                    legAnim.UpdateRot(Mathf.Lerp(1f - targetCrouch, 1f, crouchLegsDuringJunp.Evaluate(jumpProgress)));
 
                 jumpBody.transform.localPosition = Vector3.Lerp(Vector3.zero, targetPos, currentHeight);             
             }
