@@ -28,6 +28,11 @@ namespace Networking
         public float currentTime = 0f;
         public bool testRating = false;
 
+        private void Awake()
+        {
+            Application.targetFrameRate = 60;
+        }
+
         private void Start()
         {
             ConnectToServer(ip, port);

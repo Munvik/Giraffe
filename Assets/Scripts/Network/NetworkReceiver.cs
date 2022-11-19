@@ -31,12 +31,12 @@ namespace Networking
             lobby.Join(clientData);
         }
 
-        public void OnBodyMoved()
+        public void OnBodyUpdate()
         {
             BodyData bodyData = JsonUtility.FromJson<BodyData>(currentPayload);
         }
 
-        public void OnHeadMoved()
+        public void OnHeadUpdate()
         {
             HeadData headData = JsonUtility.FromJson<HeadData>(currentPayload);
         }
@@ -57,5 +57,12 @@ namespace Networking
     public class HeadData
     {
         public Vector3 position;
+        public Vector3 rotation;
+
+        public HeadData(Vector3 position, Vector3 rotation)
+        {
+            this.position = position;
+            this.rotation = rotation;
+        }
     }
 }
