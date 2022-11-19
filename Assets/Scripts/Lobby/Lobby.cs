@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Lobby
+namespace LobbyCreator
 {
     public class Lobby : MonoBehaviour, ILobby
     {
@@ -17,6 +17,7 @@ namespace Lobby
         [Header("UI References")]
         [SerializeField] private List<ClientLabel> clientLabels;
         [SerializeField] private Button startButton;
+        [SerializeField] private RectTransform view;
 
         [Header("Other References")]
         [SerializeField] private NetworkSender networkSender;
@@ -44,6 +45,7 @@ namespace Lobby
         private void StartGame()
         {
             Debug.Log("Start the game");
+            view.gameObject.SetActive(false);
             networkSender.StartGame();
         }
 
@@ -67,6 +69,11 @@ namespace Lobby
     public class ClientData
     {
         public string name;
+
+        public ClientData(string name)
+        {
+            this.name = name;
+        }
     }
 
     [System.Serializable]
