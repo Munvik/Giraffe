@@ -37,8 +37,8 @@ Material:
     - _GridSpeed: 2
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Tiling: 6.28
-    - _alpha: 0.556
+    - _Tiling: 10.32
+    - _alpha: 1
     - _main_width: 2
     m_Colors:
     - Color_1aeccfcaffa545768532893ebb69cca5: {r: 1, g: 1, b: 1, a: 1}
