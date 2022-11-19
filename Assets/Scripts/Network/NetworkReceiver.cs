@@ -36,9 +36,12 @@ namespace Networking
             BodyData bodyData = JsonUtility.FromJson<BodyData>(currentPayload);
         }
 
+        public HeadData data;
+
         public void OnHeadUpdate()
         {
             HeadData headData = JsonUtility.FromJson<HeadData>(currentPayload);
+            data = headData;
         }
 
         public void OnGameStarted()
