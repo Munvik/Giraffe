@@ -9,6 +9,7 @@ namespace Networking
     public class NetworkReceiver : MonoBehaviour
     {
         [SerializeField] private Lobby lobby;
+        public string currentPayload;
 
         private void Start()
         {
@@ -19,19 +20,28 @@ namespace Networking
         {
             Debug.Log("Received data = " + data);
             NetworkPayloadData payloadData = JsonUtility.FromJson<NetworkPayloadData>(data);
+            currentPayload = payloadData.payload;
+
+            Invoke(payloadData.methodName, 0f);
         }
 
-        public void OnBodyMoved(string data)
+        private void OnUserConnected()
         {
-            BodyData bodyData = JsonUtility.FromJson<BodyData>(data);
+            ClientData clientData = JsonUtility.FromJson<ClientData>(currentPayload);
+            lobby.Join(clientData);
         }
 
-        public void OnHeadMoved(string data)
+        public void OnBodyMoved()
         {
-            HeadData headData = JsonUtility.FromJson<HeadData>(data);
+            BodyData bodyData = JsonUtility.FromJson<BodyData>(currentPayload);
         }
 
-        public void OnGameStarted(string data)
+        public void OnHeadMoved()
+        {
+            HeadData headData = JsonUtility.FromJson<HeadData>(currentPayload);
+        }
+
+        public void OnGameStarted()
         {
 
         }
