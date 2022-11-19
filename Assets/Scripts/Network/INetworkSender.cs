@@ -7,5 +7,6 @@ namespace Networking
     public interface INetworkSender
     {
         void StartGame();
+        void Send(string methodName, string data);
     }
 }
