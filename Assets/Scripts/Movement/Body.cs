@@ -78,7 +78,7 @@ namespace Movement
             targetPos.y = Mathf.Lerp(crouchFrom, crouchTo, targetCrouch);
             transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, Time.deltaTime * crouchSpeed);
             foreach (var legAnim in legAnims)
-                legAnim.UpdateRot(targetCrouch);
+                legAnim.UpdateRot(1f - targetCrouch);
         }
 
         private void UpdateJump()
