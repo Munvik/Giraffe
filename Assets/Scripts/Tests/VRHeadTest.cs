@@ -25,12 +25,15 @@ namespace Tests
             rotation = head.rotation.eulerAngles;
 
             sender.Send("OnHeadUpdate", JsonUtility.ToJson(headData));
+            Debug.Log(JsonUtility.ToJson(headData));
         }
+
+        public float timeSpan;
 
         IEnumerator SendCoroutine()
         {
+            yield return new WaitForSeconds(timeSpan);
             SendUpdate();
-            yield return 0.5f;
             StartCoroutine(SendCoroutine());    
         }
     }
