@@ -5210,7 +5210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c58e9ab3cb3c434ab239aa68ed963fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sendUpdates: 0
+  sendUpdates: 1
   sender: {fileID: 1933910233}
   body: {fileID: 1451772922}
   movementSPeed: 2.7
