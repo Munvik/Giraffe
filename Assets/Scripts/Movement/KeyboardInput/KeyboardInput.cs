@@ -48,46 +48,46 @@ public class KeyboardInput : MonoBehaviour
     {
         body.Jump(0f);
         if (sendUpdates)
-            sender?.Send("OnJumpUpdate", string.Empty);
+            sender?.Send("OnJumpUpdate", "jump");
     }
 
     public void CrouchDown()
     {
         body.Crouch(-crouchSpeed * Time.deltaTime);
         if (sendUpdates)
-            sender?.Send("OnCrouchDown", string.Empty);
+            sender?.Send("OnCrouchDown", "c_down");
     }
 
     public void CrouchUp()
     {
         body.Crouch(crouchSpeed * Time.deltaTime);
         if (sendUpdates)
-            sender?.Send("OnCrouchUp", string.Empty);
+            sender?.Send("OnCrouchUp", "c_up");
     }
 
     public void CancelCrouch()
     {
         if (sendUpdates)
-            sender?.Send("StopCrouch", string.Empty);
+            sender?.Send("StopCrouch", "c_c");
     }
 
     public void OnMoveLeft()
     {
         body.Move(movementSPeed * Time.deltaTime);
         if (sendUpdates)
-            sender?.Send("OnMoveLeft", string.Empty);
+            sender?.Send("OnMoveLeft", "m_l");
     }
 
     public void OnMoveRight()
     {
         body.Move(-movementSPeed * Time.deltaTime);
         if (sendUpdates)
-            sender?.Send("OnMoveRight", string.Empty);
+            sender?.Send("OnMoveRight", "m_r");
     }
 
     public void CancelMovement()
     {
         if (sendUpdates)
-            sender?.Send("StopMovement", string.Empty);
+            sender?.Send("StopMovement", "c_m");
     }
 }
