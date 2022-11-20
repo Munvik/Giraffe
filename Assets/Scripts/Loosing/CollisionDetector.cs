@@ -9,6 +9,6 @@ public class CollisionDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        OnCollisionDetected?.Invoke();
+        //OnCollisionDetected?.Invoke();
     }
 }

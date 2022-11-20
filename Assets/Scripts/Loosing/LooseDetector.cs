@@ -77,15 +77,15 @@ public class LooseDetector : MonoBehaviour
     [ContextMenu("Loose")]
     public void LaunchLoose()
     {
-        if (animateScreen)
-            return;
+        //if (animateScreen)
+        //    return;
 
-        animStart = Time.time;
-        animateScreen = true;
-        reseted = false;
+        //animStart = Time.time;
+        //animateScreen = true;
+        //reseted = false;
         
-        if(sendLoose)
-            sender?.Send("Loose", "c_down");
+        //if(sendLoose)
+        //    sender?.Send("Loose", "c_down");
     }
 
     [ContextMenu("Collect alll detectors")]

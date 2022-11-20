@@ -52,6 +52,7 @@ namespace Networking
         {
             NetworkPayloadData payloadData = JsonUtility.FromJson<NetworkPayloadData>(data);
             currentPayload = payloadData.payload;
+
             Debug.Log("Received data = " + data);
             Invoke(payloadData.methodName, 0f);
         }
@@ -137,7 +138,7 @@ namespace Networking
         public LooseDetector detector;
         public void Loose()
         {
-            detector.LaunchLoose();
+            //detector.LaunchLoose();
         }
     }
 
