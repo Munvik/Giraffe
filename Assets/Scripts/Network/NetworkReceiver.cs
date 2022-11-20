@@ -9,7 +9,6 @@ namespace Networking
 {
     public class NetworkReceiver : MonoBehaviour
     {
-        [SerializeField] private bool receiveBodyMovement;
         [SerializeField] private Lobby lobby;
         [SerializeField] private KeyboardInput keyInput;
         [SerializeField] private WebSocketConnector connector;
@@ -69,11 +68,15 @@ namespace Networking
         }
 
         public HeadData data;
+        public Transform target;
 
         public void OnHeadUpdate()
         {
             HeadData headData = JsonUtility.FromJson<HeadData>(currentPayload);
             data = headData;
+
+            target.transform.position = data.position;
+            target.transform.rotation = Quaternion.Euler(data.rotation);
         }
 
         public void OnCrouchDown()
