@@ -15827,7 +15827,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lobby: {fileID: 0}
-  body: {fileID: 0}
+  body: {fileID: 1451772922}
+  connector: {fileID: 1974398230}
   currentPayload: 
   data:
     position: {x: 0, y: 0, z: 0}

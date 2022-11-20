@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using LobbyCreator;
 using UnityEngine.Events;
+using Movement;
 
 namespace Networking
 {
     public class NetworkReceiver : MonoBehaviour
     {
         [SerializeField] private Lobby lobby;
+        [SerializeField] private Body body;
         [SerializeField] private WebSocketConnector connector;
         public string currentPayload;
 
@@ -44,6 +46,24 @@ namespace Networking
             data = headData;
         }
 
+        public void OnCrouchUpdate()
+        {
+            FloatData data = JsonUtility.FromJson<FloatData>(currentPayload);
+            body.targetCrouch = data.floatVal;
+        }
+
+        public void OnJumpUpdate()
+        {
+            FloatData data = JsonUtility.FromJson<FloatData>(currentPayload);
+            body.Jump(data.floatVal);
+        }
+
+        public void OnMoveUpdate()
+        {
+            FloatData data = JsonUtility.FromJson<FloatData>(currentPayload);
+            body.Move(data.floatVal);
+        }
+
         public void OnGameStarted()
         {
 
@@ -67,5 +87,11 @@ namespace Networking
             this.position = position;
             this.rotation = rotation;
         }
+    }
+
+    [System.Serializable]
+    public class FloatData
+    {
+        public float floatVal;
     }
 }
