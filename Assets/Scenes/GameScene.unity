@@ -5346,7 +5346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c58e9ab3cb3c434ab239aa68ed963fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sendUpdates: 0
+  sendUpdates: 1
   sender: {fileID: 1933910233}
   body: {fileID: 1451772922}
   movementSPeed: 2.7
@@ -21578,7 +21578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_RootOrder

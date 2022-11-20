@@ -14,8 +14,9 @@ public class EnviroGenerator : MonoBehaviour
     public bool generateBothWays;
 
     private List<EnviroChunk> currentChunks = new List<EnviroChunk>();
-    public int currentChunkIndex = 0;        
-    
+    public int currentChunkIndex = 0;
+    private int pointer = 0;
+
     public bool testMode;
 
     private void Start()
@@ -48,10 +49,11 @@ public class EnviroGenerator : MonoBehaviour
 
     public void AddChunk(int position, bool addIndex = true)
     {
-        EnviroChunk chunk = Instantiate(chunks[Random.Range(0, chunks.Count)], transform);
+        EnviroChunk chunk = Instantiate(chunks[pointer % chunks.Count], transform);
         chunk.transform.localPosition = new Vector3(0f, 0f, position);
         currentChunks.Add(chunk);
         currentChunkIndex += addIndex ? chunkPhysicalSize : 0;
+        pointer++;
     }
 
     public void RemoveChun()
