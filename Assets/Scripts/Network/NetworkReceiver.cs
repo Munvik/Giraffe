@@ -91,7 +91,8 @@ namespace Networking
         public void StopCrouch()
         {
             updateCrouch = false;
-            crouchDown = true;
+            crouchDown = false;
+            crouchUp = false;
         }
 
         public void OnMoveLeft()
@@ -109,6 +110,8 @@ namespace Networking
         public void StopMovement()
         {
             updateMovement = false;
+            moveRight = false;
+            moveLeft = false;
         }
 
         public void OnJumpUpdate()
