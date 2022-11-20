@@ -15647,7 +15647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16553f91fdd9eab42957f17df74ab819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sendUpdates: 0
+  sendUpdates: 1
   movementRage: 2.5
   crouchFrom: 1.5
   crouchTo: 3
@@ -15781,7 +15781,8 @@ MonoBehaviour:
   targetMovement: 0
   targetCrouch: 1
   duringJump: 0
-  sender: {fileID: 0}
+  sender: {fileID: 1933910233}
+  sendThreshold: 0.25
 --- !u!1 &1568450494
 GameObject:
   m_ObjectHideFlags: 0
