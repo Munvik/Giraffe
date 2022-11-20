@@ -1,6 +1,7 @@
 using Networking;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Tests
@@ -13,6 +14,9 @@ namespace Tests
         [SerializeField] private Vector3 position;
         [SerializeField] private Vector3 rotation;
 
+        [SerializeField] private TMP_Text positionText;
+        [SerializeField] private TMP_Text rotationText;
+
         private void Start()
         {
             StartCoroutine(SendCoroutine());
@@ -23,6 +27,8 @@ namespace Tests
             HeadData headData = new HeadData(head.position, head.rotation.eulerAngles);
             position = head.position;
             rotation = head.rotation.eulerAngles;
+            positionText.text = position.ToString();
+            rotationText.text = rotation.ToString();
 
             sender.Send("OnHeadUpdate", JsonUtility.ToJson(headData));
         }
