@@ -9,14 +9,44 @@ namespace Networking
 {
     public class NetworkReceiver : MonoBehaviour
     {
+        [SerializeField] private bool receiveBodyMovement;
         [SerializeField] private Lobby lobby;
-        [SerializeField] private Body body;
+        [SerializeField] private KeyboardInput keyInput;
         [SerializeField] private WebSocketConnector connector;
         public string currentPayload;
+
+        public bool crouchDown;
+        public bool crouchUp;
+        public bool updateCrouch;
+
+        public bool moveLeft;
+        public bool moveRight;
+        public bool updateMovement;
 
         private void Start()
         {
 
+        }
+
+        private void Update()
+        {
+            if (updateMovement)
+            {
+                if(moveLeft)
+                    keyInput.OnMoveLeft();
+
+                if(moveRight)
+                    keyInput.OnMoveRight();
+            }
+
+            if (updateCrouch)
+            {
+                if (crouchDown)
+                    keyInput.CrouchDown();
+
+                if (crouchUp)
+                    keyInput.CrouchUp();
+            }
         }
 
         public void Receive(string data)
@@ -46,22 +76,51 @@ namespace Networking
             data = headData;
         }
 
-        public void OnCrouchUpdate()
+        public void OnCrouchDown()
         {
-            FloatData data = JsonUtility.FromJson<FloatData>(currentPayload);
-            body.targetCrouch = data.floatVal;
+            updateCrouch = true;
+            crouchDown = true;
+        }
+
+        public void OnCrouchUp()
+        {
+            updateCrouch = true;
+            crouchDown = true;
+        }
+
+        public void StopCrouch()
+        {
+            updateCrouch = false;
+            crouchDown = true;
+        }
+
+        public void OnMoveLeft()
+        {
+            updateMovement = true;
+            moveLeft = true;
+        }
+
+        public void OnMoveRight()
+        {
+            updateMovement = true;
+            moveRight = true;
+        }
+
+        public void StopMovement()
+        {
+            updateMovement = false;
         }
 
         public void OnJumpUpdate()
         {
-            FloatData data = JsonUtility.FromJson<FloatData>(currentPayload);
-            body.Jump(data.floatVal);
+            //FloatData data = JsonUtility.FromJson<FloatData>(currentPayload);
+            keyInput.Jump();
         }
 
         public void OnMoveUpdate()
         {
-            FloatData data = JsonUtility.FromJson<FloatData>(currentPayload);
-            body.targetMovement = data.floatVal;
+            //FloatData data = JsonUtility.FromJson<FloatData>(currentPayload);
+            //body.targetMovement = data.floatVal;
         }
 
         public void OnGameStarted()
@@ -93,5 +152,11 @@ namespace Networking
     public class FloatData
     {
         public float floatVal;
+    }
+
+    [System.Serializable]
+    public class BoolData
+    {
+        public bool boolVal;
     }
 }
