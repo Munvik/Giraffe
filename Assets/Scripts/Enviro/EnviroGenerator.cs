@@ -66,7 +66,7 @@ public class EnviroGenerator : MonoBehaviour
 
     public void UpdateEnviro()
     {
-        transform.localPosition += new Vector3(0f, 0f, -enviromentMovementSpeed);
+        transform.localPosition += new Vector3(0f, 0f, -enviromentMovementSpeed * Time.deltaTime);
         if (currentChunks[0].transform.position.z <= chunkDeletePosition)
         {
             AddChunk(currentChunkIndex);
