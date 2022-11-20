@@ -16,9 +16,10 @@ public class CameraMover : MonoBehaviour
     private void Update()
     {
         float movementValue = Mathf.InverseLerp(-1f, 1f, Mathf.Sin(Time.time * moveSpeed));
+        float rotationValue = Mathf.InverseLerp(-1f, 1f, Mathf.Sin(Time.time * rotationSpeed));
 
         cam.orthographicSize = Mathf.Lerp(zoomFrom, zoomTo, movementValue);
-        cam.transform.localRotation = Quaternion.Euler(Vector3.Lerp(rotationFrom, rotationTo, movementValue));
+        cam.transform.localRotation = Quaternion.Euler(Vector3.Lerp(rotationFrom, rotationTo, rotationValue));
     }
 
 }
