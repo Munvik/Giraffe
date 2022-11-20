@@ -68,8 +68,6 @@ namespace Movement
         private IEnumerator SendUpdates()
         {
             yield return new WaitForSeconds(sendThreshold);
-            sender?.Send("OnJumpUpdate", JsonUtility.ToJson(new FloatData() { floatVal = 1f }));
-            yield return new WaitForSeconds(sendThreshold);
             sender?.Send("OnCrouchUpdate", JsonUtility.ToJson(new FloatData() { floatVal = targetCrouch }));
             yield return new WaitForSeconds(sendThreshold); 
             sender?.Send("OnMoveUpdate", JsonUtility.ToJson(new FloatData() { floatVal = targetMovement }));
@@ -80,11 +78,6 @@ namespace Movement
         {
             targetCrouch += crouchValue;
             targetCrouch = Mathf.Clamp01(targetCrouch);
-
-            if (sendUpdates)
-            {
-                
-            }
         }
 
         public void Jump(float force)
@@ -97,7 +90,7 @@ namespace Movement
 
             if (sendUpdates)
             {
-               
+                sender?.Send("OnJumpUpdate", JsonUtility.ToJson(new FloatData() { floatVal = 1f }));
             }
         }
 
@@ -105,11 +98,6 @@ namespace Movement
         {
             targetMovement += movement;
             targetMovement = Mathf.Clamp(targetMovement, -1f, 1f);
-
-            if (sendUpdates)
-            {
-                
-            }
         }
 
         private void UpdateBodyPosition()
