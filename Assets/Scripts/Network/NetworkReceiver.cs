@@ -133,6 +133,12 @@ namespace Networking
         {
 
         }
+
+        public LooseDetector detector;
+        public void Loose()
+        {
+            detector.LaunchLoose();
+        }
     }
 
     [System.Serializable]
