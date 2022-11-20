@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using LobbyCreator;
 using UnityEngine.Events;
+using Movement;
 
 namespace Networking
 {
     public class NetworkReceiver : MonoBehaviour
     {
         [SerializeField] private Lobby lobby;
+        [SerializeField] private Body body;
+        public string currentPayload;
 
         private void Start()
         {
@@ -19,19 +22,49 @@ namespace Networking
         {
             Debug.Log("Received data = " + data);
             NetworkPayloadData payloadData = JsonUtility.FromJson<NetworkPayloadData>(data);
+            currentPayload = payloadData.payload;
+
+            Invoke(payloadData.methodName, 0f);
         }
 
-        public void OnBodyMoved(string data)
+        private void OnUserConnected()
         {
-            BodyData bodyData = JsonUtility.FromJson<BodyData>(data);
+            ClientData clientData = JsonUtility.FromJson<ClientData>(currentPayload);
+            lobby?.Join(clientData);
         }
 
-        public void OnHeadMoved(string data)
+        public void OnBodyUpdate()
         {
-            HeadData headData = JsonUtility.FromJson<HeadData>(data);
+            BodyData bodyData = JsonUtility.FromJson<BodyData>(currentPayload);
         }
 
-        public void OnGameStarted(string data)
+        public HeadData data;
+
+        public void OnHeadUpdate()
+        {
+            HeadData headData = JsonUtility.FromJson<HeadData>(currentPayload);
+            data = headData;
+        }
+
+        public void OnCrouchUpdate()
+        {
+            FloatData data = JsonUtility.FromJson<FloatData>(currentPayload);
+            body.targetCrouch = data.floatVal;
+        }
+
+        public void OnJumpUpdate()
+        {
+            FloatData data = JsonUtility.FromJson<FloatData>(currentPayload);
+            body.Jump(data.floatVal);
+        }
+
+        public void OnMoveUpdate()
+        {
+            FloatData data = JsonUtility.FromJson<FloatData>(currentPayload);
+            body.Move(data.floatVal);
+        }
+
+        public void OnGameStarted()
         {
 
         }
@@ -47,5 +80,18 @@ namespace Networking
     public class HeadData
     {
         public Vector3 position;
+        public Vector3 rotation;
+
+        public HeadData(Vector3 position, Vector3 rotation)
+        {
+            this.position = position;
+            this.rotation = rotation;
+        }
+    }
+
+    [System.Serializable]
+    public class FloatData
+    {
+        public float floatVal;
     }
 }

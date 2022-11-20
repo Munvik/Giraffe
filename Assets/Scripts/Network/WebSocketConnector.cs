@@ -23,6 +23,16 @@ namespace Networking
 
         public ClientData myClientData;
 
+        [Header("Test data")]
+        public float rateTest;
+        public float currentTime = 0f;
+        public bool testRating = false;
+
+        private void Awake()
+        {
+            Application.targetFrameRate = 60;
+        }
+
         private void Start()
         {
             ConnectToServer(ip, port);
@@ -31,6 +41,16 @@ namespace Networking
         private void Update()
         {
             TryReceive();
+
+            if (!testRating)
+                return;
+
+            currentTime += Time.deltaTime;
+            if (currentTime >= rateTest)
+            {
+                Send("Test method", "Test hello... Wanna cofee?");
+                currentTime = 0f;
+            }
         }
 
         private void ConnectToServer(string ip, int port)
@@ -70,8 +90,9 @@ namespace Networking
                 return;
 
             //allocate and receive bytes
-            byte[] bytes = new byte[256];
+            byte[] bytes = new byte[client.ReceiveBufferSize];
             int idxUsedBytes = client.Receive(bytes);
+
             if (idxUsedBytes == 0)
                 return;
 
@@ -82,6 +103,16 @@ namespace Networking
         private void Receive(string message)
         {
             networkReceiver.Receive(message);
+        }
+
+        private void OnApplicationQuit()
+        {
+            Abort();
+        }
+
+        public void Abort()
+        {
+            client.Disconnect(false);
         }
 
         #region DEVELOPMENT REGION
