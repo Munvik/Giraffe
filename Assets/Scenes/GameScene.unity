@@ -5210,6 +5210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c58e9ab3cb3c434ab239aa68ed963fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sendUpdates: 0
+  sender: {fileID: 1933910233}
   body: {fileID: 1451772922}
   movementSPeed: 2.7
   crouchSpeed: 1.5
@@ -15647,7 +15649,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16553f91fdd9eab42957f17df74ab819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sendUpdates: 0
   movementRage: 2.5
   crouchFrom: 1.5
   crouchTo: 3
@@ -15781,8 +15782,6 @@ MonoBehaviour:
   targetMovement: 0
   targetCrouch: 1
   duringJump: 0
-  sender: {fileID: 1933910233}
-  sendThreshold: 0.25
 --- !u!1 &1568450494
 GameObject:
   m_ObjectHideFlags: 0
@@ -15827,10 +15826,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 357bb1b1ce499a24b875f484e17fee9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  receiveBodyMovement: 0
   lobby: {fileID: 0}
-  body: {fileID: 1451772922}
+  keyInput: {fileID: 409084503}
   connector: {fileID: 1974398230}
   currentPayload: 
+  crouchDown: 0
+  crouchUp: 0
+  updateCrouch: 0
+  moveLeft: 0
+  moveRight: 0
+  updateMovement: 0
   data:
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}

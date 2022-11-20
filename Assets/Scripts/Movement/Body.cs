@@ -7,8 +7,6 @@ namespace Movement
 {
     public class Body : MonoBehaviour, IBody
     {
-        [SerializeField] private bool sendUpdates;
-
         [Header("Movement")]
         [SerializeField] private float movementRage;
 
@@ -38,20 +36,6 @@ namespace Movement
         private float jumpStartTime;
         public bool duringJump;
 
-        [SerializeField] private NetworkSender sender;
-
-        void Start()
-        {
-            if (sendUpdates)
-                BeginSend();
-        }
-
-        [ContextMenu("Send")]
-        public void BeginSend()
-        {
-            StartCoroutine(SendUpdates());
-        }
-
         private void Update()
         {
             UpdateBodyPosition();
@@ -62,16 +46,6 @@ namespace Movement
             {
                 Jump(1f);
             }
-        }
-
-        public float sendThreshold;
-        private IEnumerator SendUpdates()
-        {
-            yield return new WaitForSeconds(sendThreshold);
-            sender?.Send("OnCrouchUpdate", JsonUtility.ToJson(new FloatData() { floatVal = targetCrouch }));
-            yield return new WaitForSeconds(sendThreshold); 
-            sender?.Send("OnMoveUpdate", JsonUtility.ToJson(new FloatData() { floatVal = targetMovement }));
-            StartCoroutine(SendUpdates());
         }
 
         public void Crouch(float crouchValue)
@@ -87,11 +61,6 @@ namespace Movement
 
             jumpStartTime = Time.time;
             duringJump = true;
-
-            if (sendUpdates)
-            {
-                sender?.Send("OnJumpUpdate", JsonUtility.ToJson(new FloatData() { floatVal = 1f }));
-            }
         }
 
         public void Move(float movement)
