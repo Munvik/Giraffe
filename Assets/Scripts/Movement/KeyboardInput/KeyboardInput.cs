@@ -21,14 +21,34 @@ public class KeyboardInput : MonoBehaviour
 
     private void Update()
     {
+        if(Input.GetKeyDown(leftKey) && sendUpdates)
+            sender?.Send("OnMoveLeft", "m_l");
+
         if (Input.GetKey(leftKey))
             OnMoveLeft();
+
+
+
+        if (Input.GetKeyDown(rightKey) && sendUpdates)
+            sender?.Send("OnMoveRight", "m_r");
 
         if (Input.GetKey(rightKey))
             OnMoveRight();
 
+        if (Input.GetKeyUp(leftKey) || Input.GetKeyUp(rightKey))
+            CancelMovement();
+
+
+
+        if (Input.GetKeyDown(upKey) && sendUpdates)
+            sender?.Send("OnCrouchUp", "c_up");
+
         if (Input.GetKey(upKey))
             CrouchUp();
+
+
+        if (Input.GetKeyDown(downKey) && sendUpdates)
+            sender?.Send("OnCrouchDown", "c_down");
 
         if (Input.GetKey(downKey))
             CrouchDown();
@@ -36,12 +56,9 @@ public class KeyboardInput : MonoBehaviour
         if (Input.GetKeyDown(jumpKey))
             Jump();
 
-        if (Input.GetKeyUp(leftKey) || Input.GetKeyUp(rightKey))
-            CancelMovement();
 
         if (Input.GetKeyUp(upKey) || Input.GetKeyUp(downKey))
             CancelCrouch();
-
     }
 
     public void Jump()
@@ -53,16 +70,12 @@ public class KeyboardInput : MonoBehaviour
 
     public void CrouchDown()
     {
-        body.Crouch(-crouchSpeed * Time.deltaTime);
-        if (sendUpdates)
-            sender?.Send("OnCrouchDown", "c_down");
+        body.Crouch(-crouchSpeed * Time.deltaTime);            
     }
 
     public void CrouchUp()
     {
-        body.Crouch(crouchSpeed * Time.deltaTime);
-        if (sendUpdates)
-            sender?.Send("OnCrouchUp", "c_up");
+        body.Crouch(crouchSpeed * Time.deltaTime);            
     }
 
     public void CancelCrouch()
@@ -73,16 +86,12 @@ public class KeyboardInput : MonoBehaviour
 
     public void OnMoveLeft()
     {
-        body.Move(movementSPeed * Time.deltaTime);
-        if (sendUpdates)
-            sender?.Send("OnMoveLeft", "m_l");
+        body.Move(movementSPeed * Time.deltaTime);    
     }
 
     public void OnMoveRight()
     {
         body.Move(-movementSPeed * Time.deltaTime);
-        if (sendUpdates)
-            sender?.Send("OnMoveRight", "m_r");
     }
 
     public void CancelMovement()
