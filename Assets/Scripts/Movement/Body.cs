@@ -1,3 +1,4 @@
+using Networking;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ namespace Movement
 {
     public class Body : MonoBehaviour, IBody
     {
+        [SerializeField] private bool sendUpdates;
+
         [Header("Movement")]
         [SerializeField] private float movementRage;
 
@@ -35,6 +38,8 @@ namespace Movement
         private float jumpStartTime;
         public bool duringJump;
 
+        [SerializeField] private NetworkSender sender;
+
         private void Update()
         {
             UpdateBodyPosition();
@@ -51,6 +56,11 @@ namespace Movement
         {
             targetCrouch += crouchValue;
             targetCrouch = Mathf.Clamp01(targetCrouch);
+
+            if (sendUpdates)
+            {
+                sender?.Send("OnCrouchUpdate", JsonUtility.ToJson(new FloatData() { floatVal = targetCrouch}));
+            }
         }
 
         public void Jump(float force)
@@ -60,12 +70,22 @@ namespace Movement
 
             jumpStartTime = Time.time;
             duringJump = true;
+
+            if (sendUpdates)
+            {
+                sender?.Send("OnJumpUpdate", JsonUtility.ToJson(new FloatData() { floatVal = 1f }));
+            }
         }
 
         public void Move(float movement)
         {
             targetMovement += movement;
             targetMovement = Mathf.Clamp(targetMovement, -1f, 1f);
+
+            if (sendUpdates)
+            {
+                sender?.Send("OnMoveUpdate", JsonUtility.ToJson(new FloatData() { floatVal = targetMovement }));
+            }
         }
 
         private void UpdateBodyPosition()

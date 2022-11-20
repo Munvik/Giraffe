@@ -25,7 +25,6 @@ namespace Tests
             rotation = head.rotation.eulerAngles;
 
             sender.Send("OnHeadUpdate", JsonUtility.ToJson(headData));
-            Debug.Log(JsonUtility.ToJson(headData));
         }
 
         public float timeSpan;

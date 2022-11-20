@@ -5640,7 +5640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &786860620
 Transform:
   m_ObjectHideFlags: 0
@@ -15501,7 +15501,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1383070633
 AudioListener:
   m_ObjectHideFlags: 0
@@ -15647,6 +15647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16553f91fdd9eab42957f17df74ab819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sendUpdates: 0
   movementRage: 2.5
   crouchFrom: 1.5
   crouchTo: 3
@@ -15780,6 +15781,7 @@ MonoBehaviour:
   targetMovement: 0
   targetCrouch: 1
   duringJump: 0
+  sender: {fileID: 0}
 --- !u!1 &1568450494
 GameObject:
   m_ObjectHideFlags: 0
@@ -15825,6 +15827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lobby: {fileID: 0}
+  body: {fileID: 0}
   currentPayload: 
   data:
     position: {x: 0, y: 0, z: 0}
@@ -21146,7 +21149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_RootOrder
@@ -21205,6 +21208,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1933910233}
     - target: {fileID: 2000703605, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: timeSpan
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000703605, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -21251,7 +21258,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -21289,7 +21296,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
