@@ -21,14 +21,14 @@ namespace Networking
         {
             NetworkPayloadData payloadData = JsonUtility.FromJson<NetworkPayloadData>(data);
             currentPayload = payloadData.payload;
-
+            Debug.Log("Received data = " + data);
             Invoke(payloadData.methodName, 0f);
         }
 
         private void OnUserConnected()
         {
             ClientData clientData = JsonUtility.FromJson<ClientData>(currentPayload);
-            lobby.Join(clientData);
+            lobby?.Join(clientData);
         }
 
         public void OnBodyUpdate()
