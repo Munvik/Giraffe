@@ -169,7 +169,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chunks:
   - {fileID: 8636615045749213935, guid: 4cddc032f6b75814997a3896f41a93b0, type: 3}
+  - {fileID: 8636615045749213935, guid: e20b4ec6c5ba92844968d3405e31da4f, type: 3}
+  - {fileID: 8636615045749213935, guid: 4cddc032f6b75814997a3896f41a93b0, type: 3}
+  - {fileID: 8636615045749213935, guid: 2121a88a4bda26141b0d07b0e1ac7405, type: 3}
+  - {fileID: 8636615045749213935, guid: 4cddc032f6b75814997a3896f41a93b0, type: 3}
+  - {fileID: 8636615045749213935, guid: d5a52ead09d639149bbb27abab9bb2b7, type: 3}
+  - {fileID: 8636615045749213935, guid: 4cddc032f6b75814997a3896f41a93b0, type: 3}
+  - {fileID: 8636615045749213935, guid: 631a7fcb96892af40bf8b369f0dc1acc, type: 3}
+  - {fileID: 8636615045749213935, guid: 4cddc032f6b75814997a3896f41a93b0, type: 3}
+  - {fileID: 8636615045749213935, guid: 7502c775979b2074082d8aa369d5ce3d, type: 3}
+  - {fileID: 8636615045749213935, guid: 4cddc032f6b75814997a3896f41a93b0, type: 3}
+  - {fileID: 8636615045749213935, guid: 7e02e01147bec7b488a87755386e7e25, type: 3}
+  - {fileID: 8636615045749213935, guid: 4cddc032f6b75814997a3896f41a93b0, type: 3}
+  - {fileID: 8636615045749213935, guid: 866887dde04ce6b4f924d2ba034d17fd, type: 3}
+  - {fileID: 8636615045749213935, guid: 4cddc032f6b75814997a3896f41a93b0, type: 3}
+  - {fileID: 8636615045749213935, guid: abf7cc4cbb5cdf545ae7526af8ee1116, type: 3}
+  - {fileID: 8636615045749213935, guid: e7721a52006686e409b3925c650891a7, type: 3}
+  - {fileID: 8636615045749213935, guid: 80818e986ea903c46930149c2a1c871b, type: 3}
+  - {fileID: 8636615045749213935, guid: 4cddc032f6b75814997a3896f41a93b0, type: 3}
+  - {fileID: 8636615045749213935, guid: fc1a7b3ddff537f46b2a44312117d05f, type: 3}
+  - {fileID: 8636615045749213935, guid: 4cddc032f6b75814997a3896f41a93b0, type: 3}
   - {fileID: 8636615045749213935, guid: 64f351a155ac3d247b0ca02d37dd9c66, type: 3}
+  - {fileID: 8636615045749213935, guid: 4cddc032f6b75814997a3896f41a93b0, type: 3}
+  - {fileID: 8636615045749213935, guid: 945ddb41070604547b3ec106a0ce60ea, type: 3}
   chunkPhysicalSize: 5
   chunkDeletePosition: -125
   enviromentMovementSpeed: 0.05
@@ -5744,7 +5766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5388469a438067347b703f69e9d235b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  main: {fileID: 2000703603}
+  main: {fileID: 1898841992}
   follower: {fileID: 9130594730903474947}
 --- !u!4 &782172831 stripped
 Transform:
@@ -16628,30 +16650,11 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!1 &1898841991 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100012, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
-  m_PrefabInstance: {fileID: 2000703599}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1898841992 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400012, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
   m_PrefabInstance: {fileID: 2000703599}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1898841997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898841991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3baecf24787737e40beb4b7b7086d449, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  head: {fileID: 0}
-  applyFrom: {fileID: 1898841992}
 --- !u!1 &1933910232
 GameObject:
   m_ObjectHideFlags: 0
@@ -21668,6 +21671,10 @@ PrefabInstance:
     - target: {fileID: 2000703606, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_Antialiasing
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000703606, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: m_RendererIndex
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2000703606, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_RenderPostProcessing
