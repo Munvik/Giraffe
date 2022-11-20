@@ -61,7 +61,7 @@ namespace Networking
         public void OnMoveUpdate()
         {
             FloatData data = JsonUtility.FromJson<FloatData>(currentPayload);
-            body.Move(data.floatVal);
+            body.targetMovement = data.floatVal;
         }
 
         public void OnGameStarted()
