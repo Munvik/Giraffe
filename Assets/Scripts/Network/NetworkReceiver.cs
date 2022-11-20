@@ -85,7 +85,7 @@ namespace Networking
         public void OnCrouchUp()
         {
             updateCrouch = true;
-            crouchDown = true;
+            crouchUp = true;
         }
 
         public void StopCrouch()
