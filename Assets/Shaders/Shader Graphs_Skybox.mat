@@ -49,5 +49,9 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors: []
+    m_Colors:
+    - _LowerColor: {r: 0.32941175, g: 0.007843138, b: 0.572549, a: 1}
+    - _SunOffset: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _SunTIling: {r: 1, g: 1, b: 0, a: 0}
+    - _UpperColor: {r: 0.8705883, g: 0.26666668, b: 0.9058824, a: 1}
   m_BuildTextureStacks: []
