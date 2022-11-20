@@ -40,6 +40,18 @@ namespace Movement
 
         [SerializeField] private NetworkSender sender;
 
+        void Start()
+        {
+            if (sendUpdates)
+                BeginSend();
+        }
+
+        [ContextMenu("Send")]
+        public void BeginSend()
+        {
+            StartCoroutine(SendUpdates());
+        }
+
         private void Update()
         {
             UpdateBodyPosition();
@@ -52,6 +64,18 @@ namespace Movement
             }
         }
 
+        public float sendThreshold;
+        private IEnumerator SendUpdates()
+        {
+            yield return new WaitForSeconds(sendThreshold);
+            sender?.Send("OnJumpUpdate", JsonUtility.ToJson(new FloatData() { floatVal = 1f }));
+            yield return new WaitForSeconds(sendThreshold);
+            sender?.Send("OnCrouchUpdate", JsonUtility.ToJson(new FloatData() { floatVal = targetCrouch }));
+            yield return new WaitForSeconds(sendThreshold); 
+            sender?.Send("OnMoveUpdate", JsonUtility.ToJson(new FloatData() { floatVal = targetMovement }));
+            StartCoroutine(SendUpdates());
+        }
+
         public void Crouch(float crouchValue)
         {
             targetCrouch += crouchValue;
@@ -59,7 +83,7 @@ namespace Movement
 
             if (sendUpdates)
             {
-                sender?.Send("OnCrouchUpdate", JsonUtility.ToJson(new FloatData() { floatVal = targetCrouch}));
+                
             }
         }
 
@@ -73,7 +97,7 @@ namespace Movement
 
             if (sendUpdates)
             {
-                sender?.Send("OnJumpUpdate", JsonUtility.ToJson(new FloatData() { floatVal = 1f }));
+               
             }
         }
 
@@ -84,7 +108,7 @@ namespace Movement
 
             if (sendUpdates)
             {
-                sender?.Send("OnMoveUpdate", JsonUtility.ToJson(new FloatData() { floatVal = targetMovement }));
+                
             }
         }
 
